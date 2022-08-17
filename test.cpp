@@ -19,8 +19,18 @@ int main()
   // cout << a << endl;
   // cout << b[0] << endl;
 
-  string a = "Khush";
-  char b = 'F';
-  // print(&a[0]);
-  cout << a + b << endl;
+  int num = 0;
+  int i;
+  for (i = 0; 3 != num; ++i)
+  {
+    cout << i << endl;
+    ++num;
+    cout << "Fuck" << endl;
+  }
+  cout << i << endl;
+  cout << num << endl;
+  // string a = "Khush";
+  // char b = 'F';
+  // // print(&a[0]);
+  // cout << a + b << endl;
 }
