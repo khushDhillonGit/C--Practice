@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 void print(char *a)
@@ -19,18 +20,35 @@ int main()
   // cout << a << endl;
   // cout << b[0] << endl;
 
-  int num = 0;
-  int i;
-  for (i = 0; 3 != num; ++i)
-  {
-    cout << i << endl;
-    ++num;
-    cout << "Fuck" << endl;
-  }
-  cout << i << endl;
-  cout << num << endl;
+  // int num = 0;
+  // int i;
+  // for (i = 0; i < 4; ++i)
+  // {
+  //   cout << i << endl;
+  //   ++num;
+  //   cout << "Hi" << endl;
+  // }
+  // cout << i << endl;
+  // cout << num << endl;
   // string a = "Khush";
   // char b = 'F';
   // // print(&a[0]);
   // cout << a + b << endl;
+  // vector<int> p = {0};
+  // p[2] = 2;
+  // if (p[2] == 0)
+  // {
+  //   cout << p[2] << endl;
+  //   cout << "Hi0" << endl;
+  // }
+  // else
+  // {
+  //   cout << "Hi" << endl;
+  // }
+  // cout << p[2] << endl;
+  // for (int i = 0; i < 4; i++)
+  // {
+  //   cout << a[i] << endl;
+  // }
+  cout << (char)('0' + 8) << endl;
 }
