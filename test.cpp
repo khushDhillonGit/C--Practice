@@ -50,5 +50,7 @@ int main()
   // {
   //   cout << a[i] << endl;
   // }
-  cout << (char)('0' + 8) << endl;
+  string a = "Jello";
+  printf("%s", a.c_str());
+  cout << a.length() << endl;
 }
