@@ -5,18 +5,31 @@
 
 using namespace std;
 
-string Recursion(string a, int last)
+string sReverse(string a, int last)
 {
   static string b = "";
   if (last == a.length())
   {
     return "";
   }
-  Recursion(a, last + 1);
+  sReverse(a, last + 1);
   b += a[last];
   return b;
 }
+bool cPalin(string a)
+{
+  if (a.length() == 0 || a.length() == 1)
+  {
+    return true;
+  }
+  if (a[0] == a[a.length() - 1])
+  {
+    return cPalin(a.substr(1, a.length() - 2));
+  }
+  return false;
+}
 int main()
 {
-  printf("%s", Recursion("Khushwinder", 0).c_str());
+  // printf("%s", sReverse("Khushwinder", 0).c_str());
+  cout << cPalin("KAYAK") << endl;
 }

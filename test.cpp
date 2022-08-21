@@ -50,7 +50,12 @@ int main()
   // {
   //   cout << a[i] << endl;
   // }
-  string a = "Jello";
-  printf("%s", a.c_str());
-  cout << a.length() << endl;
+  // string a = "Jello";
+  // a = a.substr(1, a.length() - 2);
+  // cout << a << endl;
+  int k = 5;
+
+  string a = "000";
+  a += '0' + k;
+  cout << a << endl;
 }
