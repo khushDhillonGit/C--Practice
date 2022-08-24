@@ -20,7 +20,6 @@ void Recursion(char *s,int k){
       }
     }
   }
-
 }
 int main(){
   char a[] = "ABC";  

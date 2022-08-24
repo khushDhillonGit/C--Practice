@@ -53,9 +53,8 @@ int main()
   // string a = "Jello";
   // a = a.substr(1, a.length() - 2);
   // cout << a << endl;
-  int k = 5;
 
-  string a = "000";
-  a += '0' + k;
-  cout << a << endl;
+  string a = "123";
+  // a = a.substr(0, a.length() - 1);
+  cout << a.length() << endl;
 }
