@@ -1,14 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-void print(char *a)
-{
-  // *(a + 1) = "D";
-  // cout << *(a + 1) << endl;
-  printf("%s", a);
-}
 int main()
 {
   // int k = 9;
@@ -54,7 +50,18 @@ int main()
   // a = a.substr(1, a.length() - 2);
   // cout << a << endl;
 
-  string a = "123";
+  int h = 10;
+  char i = ' ';
+  // int m = 10;
+
+  // string k = " ";
+  h = i;
+  // k = i;
+  // k += ':';0
+  // k += m / 10 >= 1 ? ('0' + m) : '0' + ('0' + m);
   // a = a.substr(0, a.length() - 1);
-  cout << a.length() << endl;
+  // cout << pow(2, 3) << endl;
+  // cout << i << endl;
+  cout << sizeof(long long int) << endl;
+  cout << sizeof(bitset<128>) << endl;
 }
