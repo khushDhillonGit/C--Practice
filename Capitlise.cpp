@@ -31,5 +31,4 @@ string capitalizeTitle(string title)
 }
 int main()
 {
-  cout <<
 }
