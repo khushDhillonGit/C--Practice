@@ -30,5 +30,5 @@ int totalNQueens(int n)
 }
 int main()
 {
-  cout << totalNQueens
+  // cout << totalNQueens
 }
