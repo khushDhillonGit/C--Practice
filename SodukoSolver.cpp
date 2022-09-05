@@ -4,95 +4,65 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-void removeInBox(vector<vector<char>> &board, vector<char> &k, int r, int c);
-vector<char> available(int r, int c, vector<vector<char>> &board)
+bool available(int r, int c, vector<vector<char>> &board, char val)
 {
-  vector<char> k = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+  int row = r - r % 3;
+  int col = c - c % 3;
+
   for (int i = 0; i < 9; i++)
   {
-    if (board[r][i] != '.')
+    if (board[r][i] == val)
     {
-      k.erase(remove(k.begin(), k.end(), board[r][i]), k.end());
+      return false;
     }
   }
   for (int i = 0; i < 9; i++)
   {
-    if (board[i][c] != '.')
+    if (board[i][c] == val)
     {
-      k.erase(remove(k.begin(), k.end(), board[i][c]), k.end());
+      return false;
     }
   }
-
-  removeInBox(board, k, r, c);
-  return k;
-}
-void removeInBox(vector<vector<char>> &board, vector<char> &k, int r, int c)
-{
-  int row = 0;
-  int col = 0;
-  bool found = false;
-  for (int i = 2; i < 9; i += 3)
-  {
-    for (int j = 2; j < 9; j += 3)
-    {
-      if (r <= i && c <= j)
-      {
-
-        row = i;
-        col = j;
-        found = true;
-        break;
-      }
-    }
-    if (found)
-    {
-      break;
-    }
-  }
-
   for (int i = row - 2; i < row + 1; i++)
   {
     for (int j = col - 2; j < col + 1; j++)
     {
       if (board[i][j] != '.')
       {
-        k.erase(remove(k.begin(), k.end(), board[i][j]), k.end());
+        return false;
       }
     }
   }
+  return true;
 }
-void Recursion(int row, int col, vector<vector<char>> &board, vector<vector<char>> &board0)
+bool Recursion(int row, int col, vector<vector<char>> &board)
 {
   if (row == 9)
   {
-    board = board0;
-    return;
+    return true;
   }
-  if (board0[row][col] == '.')
+  if (board[row][col] == '.')
   {
-    vector<char> Available;
-    Available = available(row, col, board0);
-    if (Available.size() == 0)
+    for (char i = '1'; i <= '9'; i++)
     {
-      return;
-    }
-    for (int j = 0; j < Available.size(); j++)
-    {
-      board0[row][col] = Available[j];
-      col == 8 ? Recursion(row + 1, 0, board, board0) : Recursion(row, col + 1, board, board0);
-      board0[row][col] = '.';
+      if (available(row, col, board, i))
+      {
+        board[row][col] = i;
+        col == 8 ? Recursion(row + 1, 0, board) : Recursion(row, col + 1, board);
+        board[row][col] = '.';
+      }
     }
   }
   else
   {
-    col == 8 ? Recursion(row + 1, 0, board, board0) : Recursion(row, col + 1, board, board0);
+    col == 8 ? Recursion(row + 1, 0, board) : Recursion(row, col + 1, board);
   }
+  return false;
 }
 
 void solveSudoku(vector<vector<char>> &board)
 {
-  vector<vector<char>> board0 = board;
-  Recursion(0, 0, board, board0);
+  Recursion(0, 0, board);
 }
 int main()
 {
