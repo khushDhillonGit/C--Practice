@@ -8,7 +8,7 @@ void swap(int *a,int i,int j){
 }
 
 void AddMissing(int *a,int n,int *l){
-  a[(*l)++] = n; 
+  a[(*l)++] = n;
   for(int i=(*l)-2;i>=0;i--){
     if(a[i]>a[i+1]){
       swap(a,i,i+1);
@@ -20,7 +20,7 @@ int main(){
     int length = 6;
     int con = a[0];
     for(int i=0;i<10;i++){
-      
+
       if(a[i] != con){
         cout<< con<< " ";
         AddMissing(a,con,&length);
@@ -30,6 +30,5 @@ int main(){
     cout<<endl;
    for(int k:a){
          cout << k <<endl;
-    }    
-   
+    }
 }
