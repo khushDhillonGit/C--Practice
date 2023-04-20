@@ -17,7 +17,7 @@ class Interval{
             this->start = _start;
             this->end = _end;
         }
-}
+};
 void empFreeTime(vector<vector<int>> &interval){
 
     vector<Interval> res;
