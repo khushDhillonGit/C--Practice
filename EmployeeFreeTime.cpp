@@ -45,6 +45,6 @@ int main()
 
     vector<vector<int>> k {a,b,c};
 
-    empFreeTime(&k);
+    empFreeTime(k);
 
 }
