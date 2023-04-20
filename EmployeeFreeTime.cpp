@@ -20,7 +20,7 @@ class Interval{
 }
 
 vector<Interval> empFreeTime(vector<vector<Interval>> &interval){
-
+    
 
 }
 int main()
