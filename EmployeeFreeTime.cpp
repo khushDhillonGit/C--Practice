@@ -18,9 +18,11 @@ class Interval{
             this->end = _end;
         }
 }
-
 vector<Interval> empFreeTime(vector<vector<Interval>> &interval){
-    std:priority_queue<int> 
+    std:priority_queue<Interval,vector<Interval>,[](Interval start0,Interval start1){ return start0.start < start1.start; }>
+    for(vector<Interval> a: interval){
+        for(Interval)
+    }
 
 }
 int main()
