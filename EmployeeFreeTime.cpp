@@ -28,7 +28,7 @@ void empFreeTime(vector<vector<int>> &interval){
         }
     }
 
-    std:priority_queue<Interval,vector<Interval>,[](Interval start0,Interval start1){ return start0.start < start1.start; }>
+    std:priority_queue<Interval,vector<Interval>,[](Interval start0,Interval start1){ return start0.start < start1.start; };>
     pq(res.begin(),res.end());
 
     auto ans = pq.poll();
