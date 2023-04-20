@@ -20,7 +20,7 @@ class Interval{
 }
 
 vector<Interval> empFreeTime(vector<vector<Interval>> &interval){
-    
+    std:priority_queue<int> 
 
 }
 int main()
