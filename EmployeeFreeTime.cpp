@@ -23,8 +23,8 @@ void empFreeTime(vector<vector<int>> &interval){
     vector<Interval> res;
 
     for(vector<int> a: interval){
-        for(int b: a){
-            res.push_back(b);
+        for(int i=0;i<a.size();i++){
+            res.push_back(new Interval(i,++i));
         }
     }
 
@@ -39,8 +39,12 @@ void empFreeTime(vector<vector<int>> &interval){
 }
 int main()
 {
-    vector<Interval> a {1,2,5,6};
-    vector<Interval> b {1,3};
-    vector<Interval> c {4,7};
+    vector<int> a {1,2,5,6};
+    vector<int> b {1,3};
+    vector<int> c {4,7};
+
+    vector<vector<int>> k {a,b,c};
+
+    empFreeTime(&k);
 
 }
