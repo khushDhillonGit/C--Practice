@@ -24,12 +24,12 @@ void empFreeTime(vector<vector<int>> &interval){
 
     for(vector<int> a: interval){
         for(int i=0;i<a.size();i++){
-            res.push_back(new Interval(i,++i));
+            Interval k = Interval(i,++i);
+            res.push_back(k);
         }
     }
 
-    std:priority_queue<Interval,vector<Interval>,[](Interval start0,Interval start1){ return start0.start < start1.start; };>
-    pq(res.begin(),res.end());
+    std:priority_queue pq (res.begin(),res.end(),[](Interval start0,Interval start1){ return start0.start < start1.start; }) ;
 
     auto ans = pq.poll();
     cout << ans.start << endl;
