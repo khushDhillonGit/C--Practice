@@ -88,5 +88,6 @@
     "valarray": "cpp",
     "variant": "cpp"
   },
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+  "gitdoc.enabled": true
 }
