@@ -37,6 +37,7 @@ public:
             //check if value inserting is not same as m_valBegin
             if (val == m_valBegin)
                 return;
+                
 
             //insert starting pair
             m_map[keyBegin] = val;
