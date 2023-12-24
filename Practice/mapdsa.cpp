@@ -14,6 +14,7 @@ public:
     interval_map(V const &val)
         : m_valBegin(val)
     {
+        
     }
 
     // Assign value val to interval [keyBegin, keyEnd).
@@ -29,57 +30,43 @@ public:
         if (!(keyBegin < keyEnd))
             return;
 
-        auto itUpperKeyEnd = m_map.upper_bound(keyEnd);
+        typename std::map<K,V>::iterator itUpperKeyEnd = m_map.upper_bound(keyEnd);
 
         // map is empty
         if (itUpperKeyEnd == m_map.begin())
         {
-            //check if value inserting is not same as m_valBegin
             if (val == m_valBegin)
                 return;
-                
 
-            //insert starting pair
-            m_map[keyBegin] = val;
-
-            //insert end pair
-            m_map[keyEnd] = m_valBegin;
+            m_map.insert_or_assign(keyBegin,val);
+            m_map.insert_or_assign(keyEnd,m_valBegin);
         }
-        // map is not empty
+        // map not empty
         else
         {
-            auto itLowerKeyBegin = m_map.lower_bound(keyBegin);
-
-            // here we want to go back then the lower bound of key begin and check what previous pair is so not to insert duplicates
+            typename std::map<K,V>::iterator itLowerKeyBegin = m_map.lower_bound(keyBegin);
             itLowerKeyBegin = itLowerKeyBegin != m_map.begin() ? std::prev(itLowerKeyBegin):m_map.end();
-            //same for upperBound for keyEnd
             itUpperKeyEnd = itUpperKeyEnd != m_map.begin()? std::prev(itUpperKeyEnd):m_map.end();
 
-            //check if we need to insert the value or not, because in cases where previous value is same as val we dont want to insert
-            if(itUpperKeyEnd == m_map.end() || (itUpperKeyEnd != m_map.end() && itUpperKeyEnd->second != val))
+            if(itUpperKeyEnd == m_map.end() || (itUpperKeyEnd != m_map.end() && !(itUpperKeyEnd->second == val)))
             {
-                //insert the keyEnd
-                m_map[keyEnd] = m_map[(itUpperKeyEnd)->first];
-                //calculate the itUpperKeyEnd but this time lower_bound as when erasing the upper limit is not erased [lower,upper)
+                m_map.insert_or_assign(keyEnd,(itUpperKeyEnd)->second);
                 itUpperKeyEnd = m_map.lower_bound(keyEnd);
             }
             else
-            {
-                //itUpperKeyEnd is not at map end, so we definitely decreased it above when assigning so we need to increase it to 
+            { 
                 ++itUpperKeyEnd;
             }
             
-            //same goes for inserting for keyBegin
-            if(itLowerKeyBegin == m_map.end() || (itLowerKeyBegin != m_map.end() && itLowerKeyBegin->second != val))
+            if(itLowerKeyBegin == m_map.end() || (itLowerKeyBegin != m_map.end() && !(itLowerKeyBegin->second == val)))
             {
-                m_map[keyBegin] = val;
+                m_map.insert_or_assign(keyBegin,val);
                 itLowerKeyBegin = m_map.upper_bound(keyBegin);
             }else
             {
                 ++itLowerKeyBegin;
             }
 
-            //erase the values which are in between
             if(itLowerKeyBegin != m_map.end())
             {
                 if (itLowerKeyBegin != itUpperKeyEnd)
