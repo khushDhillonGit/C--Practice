@@ -32,58 +32,31 @@ int maximizeSquareArea(int m, int n, vector<int> &hFences, vector<int> &vFences)
     hFences.push_back(1);
     vFences.push_back(1);
 
-    sort(hFences.begin(), hFences.end());
-    sort(vFences.begin(), vFences.end());
+    unordered_map<int,bool> map;
 
-    if (m < n)
+    long long res = -1;
+    int size = hFences.size();
+    for(int i = 0; i< size -1;i++)
     {
-
-
-        while (m > 0)
+        for(int j = 1 + i;j <size;j++)
         {
-            if (hasDiff(vFences, m) && hasDiff(hFences, m))
+            map[abs(hFences[i] - hFences[j])] = true;
+        }
+    }
+    size = vFences.size();
+    for(int i = 0; i< size -1;i++)
+    {
+        for(int j = 1 + i;j < size;j++)
+        {
+            int diff = abs(vFences[i] - vFences[j]);
+            if(map[diff])
             {
-                return (m * m) % M;
+                res = diff > res ? diff : res; 
             }
-            m--;
-        }
-    }
-    else
-    {
-             while (n > 0)
-        {
-            if (hasDiff(vFences, n) && hasDiff(hFences, n))
-            {
-                return (n * n) % M;
-            }
-            n--;
         }
     }
 
-    return -1;
-}
-
-bool hasDiff(vector<int> &vec, int diff)
-{
-    int i = 0;
-    int j = 1;
-    while (i <= j && j < vec.size())
-    {
-        if (vec[j] - vec[i] > diff)
-        {
-            i++;
-        }
-        else if (vec[j] - vec[i] == diff)
-        {
-            return true;
-        }
-        else
-        {
-            j++;
-        }
-    }
-
-    return false;
+    return res == -1 ? res : (res * res) % M;
 }
 
 int main()
