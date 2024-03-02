@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 void Recursion(int &total, vector<int> &col, vector<int> &col45, vector<int> &col135, int row, int &n)

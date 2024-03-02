@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 bool valid(int r, int c, vector<vector<char>> &board)

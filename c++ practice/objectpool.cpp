@@ -20,26 +20,24 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-void flatten(TreeNode *root)
+std::vector<TreeNode> objectPool;
+std::vector<TreeNode *> availableObjects;
+
+TreeNode *getObject()
 {
-    if (root == NULL) return;
-    flatten(root->left);
-    flatten(root->right);
-
-    TreeNode temp* = root->left;
-    if(temp!=NULL)
+    if(availableObjects.empty())
     {
-        while (temp->right !=NULL)
-        {
-            temp = temp->right;
-        }
-        temp.right = root->left;
+        objectPool.emplace_back();
+        availableObjects.push_back(&objectPool.back());
     }
-    root->right = root->left;   
-    root->left = NULL;
 
+    TreeNode* tree = availableObjects.back();
+    availableObjects.pop_back();
+    return tree;
 }
 
 int main()
 {
+    std::unique_ptr<int> ptr(new int(5));
+    std::shared_ptr<int> sh = std::make_shared<int>(5);
 }

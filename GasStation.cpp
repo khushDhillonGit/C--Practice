@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 int formula(int sf, int sk, int sFuel, int dis)
