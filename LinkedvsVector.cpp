@@ -24,34 +24,41 @@ struct TreeNode
 int main()
 {
     vector<int> soldiers;
-    for (int i = 1; i < 5; i++)
+
+    for (int i = 1; i <= 20000; i++)
         soldiers.push_back(i);
 
-    int remain = soldiers.size();
-    int size = remain;
+    int size = soldiers.size();
+    int remain = size / 2;
     int i = 0;
-    int c = 0;
+    int c = size % 2 == 0 ? 0 : 1;
 
     while (remain != 1)
     {
-        if (soldiers[i] == -1)
+        if (i >= size)
+        {
+            i = 0;
             continue;
+        }
+        if (soldiers[i] == -1)
+        {
+            i += 2;
+            continue;
+        }
         c++;
         if (c == 2)
         {
             soldiers[i] = -1;
-            remain--;
+            remain -= 1;
             c = 0;
         }
-        i++;
-        if (i == size)
-            i = 0;
+        i += 2;
     }
     i = 0;
-    // while (soldiers[i] != -1)
-    // {
-    //     i++;
-    // }
+    while (soldiers[i] == -1)
+    {
+        i += 2;
+    }
 
-    cout << soldiers[--i] << endl;
+    cout << soldiers[i] << endl;
 }
