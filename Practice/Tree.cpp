@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <Queue>
-#include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 

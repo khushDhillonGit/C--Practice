@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 
 using namespace std;
 void merge(int *a, int s, int e)

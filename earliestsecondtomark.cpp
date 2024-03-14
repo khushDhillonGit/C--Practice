@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 struct ListNode
@@ -19,6 +19,16 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
+
+struct LinkNode
+{
+    int val;
+    LinkNode* next;
+    LinkNode* prev;
+};
+
+
 bool util(int index, vector<int> &nums, vector<int> &cI);
 int earliestSecondToMarkIndices(vector<int> &nums, vector<int> &changeIndices)
 {
@@ -30,7 +40,7 @@ int earliestSecondToMarkIndices(vector<int> &nums, vector<int> &changeIndices)
         int mid = l + (r - l) / 2;
         if (util(mid, nums, changeIndices))
         {
-            r = mid;
+            r = mid -1;
         }
         else
         {

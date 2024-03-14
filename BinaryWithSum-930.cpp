@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 struct ListNode

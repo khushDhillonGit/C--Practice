@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
+#include <algorithm>
 #define max(X, Y) ((X) > (Y) ? (X) : (Y))
 
 using namespace std;

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
-
+#include<algorithm>
+#include<list>
 using namespace std;
 
 struct ListNode
@@ -23,92 +23,96 @@ struct TreeNode
 
 int common(string a, string b, int min);
 
-class Trie 
-{
-    private:
-        Trie *node[10];
-    
-    public:
-        void insert(int num)
-        {
-            string word = to_string(num);
-            Trie *temp = this;
-            for(char a: word)
-            {
-                if(temp->node[a - '0'] == nullptr)
-                {
-                    temp->node[a - '0'] = new Trie();
-                }
-                temp = temp->node[a - '0'];
-            }
-        }
+//class Trie 
+//{
+//    private:
+//        Trie *node[10];
+//    
+//    public:
+//        void insert(int num)
+//        {
+//            string word = to_string(num);
+//            Trie *temp = this;
+//            for(char a: word)
+//            {
+//                if(temp->node[a - '0'] == nullptr)
+//                {
+//                    temp->node[a - '0'] = new Trie();
+//                }
+//                temp = temp->node[a - '0'];
+//            }
+//        }
+//
+//        int longestPrefix(int num)
+//        {
+//            int res = 0;
+//            string word = to_string(num);
+//            Trie *temp = this;
+//            for(char a: word)
+//            {
+//                if(temp->node[a - '0'] == nullptr)
+//                {
+//                    return res;
+//                }
+//                res++;
+//                temp = temp->node[a - '0'];
+//            }
+//            return res;
+//        }
+//
+//};
+//
+//int longestCommonPrefix(vector<int> &arr1, vector<int> &arr2)
+//{
+//    int res = 0;
+//
+//    Trie *trie = new Trie();
+//    for(int a : arr1)
+//    {
+//        trie->insert(a);
+//    }
+//
+//    for(int a: arr2)
+//    {
+//        res = max(res,trie->longestPrefix(a));
+//    }
+//
+//    return res;
+//}
 
-        int longestPrefix(int num)
-        {
-            int res = 0;
-            string word = to_string(num);
-            Trie *temp = this;
-            for(char a: word)
-            {
-                if(temp->node[a - '0'] == nullptr)
-                {
-                    return res;
-                }
-                res++;
-                temp = temp->node[a - '0'];
-            }
-            return res;
-        }
-
-};
-
-int longestCommonPrefix(vector<int> &arr1, vector<int> &arr2)
-{
-    int res = 0;
-
-    Trie *trie = new Trie();
-    for(int a : arr1)
-    {
-        trie->insert(a);
-    }
-
-    for(int a: arr2)
-    {
-        res = max(res,trie->longestPrefix(a));
-    }
-
-    return res;
-}
 
 
-// int longestCommonPrefix(vector<int> &arr1, vector<int> &arr2)
-// {
-//     // sort(arr1.begin(), arr1.end());
-//     // sort(arr2.begin(), arr2.end());
 
-//     int res = 0;
-//     int a1 = arr1.size();
-//     int a2 = arr2.size();
+ int longestCommonPrefix(vector<int> &arr1, vector<int> &arr2)
+ {
+     sort(arr1.begin(), arr1.end());
+     sort(arr2.begin(), arr2.end());
 
-//     for (int i = a1 - 1; i >= 0; i--)
-//     {
+     int res = 0;
+     int a1 = arr1.size();
+     int a2 = arr2.size();
+
+     for (int i = a1 - 1; i >= 0; i--)
+     {
         
-//         // if (res >= la)
-//         //     break;
-//         for (int j = a2 - 1; j >= 0; j--)
-//         {
-//             string a = to_string(arr1[i]);
-//             string b = to_string(arr2[j]);
-//             // if (res >= lb)
-//             // {
-//             //     break;
-//             // }
-//             int m = min(a.size(), b.size());
-//             res = max(res, common(a, b, m));
-//         }
-//     }
-//     return res;
-// }
+          string a = to_string(arr1[i]);
+          int la = a.size();
+          if (res >= la)
+              break;
+         for (int j = a2 - 1; j >= 0; j--)
+         {
+             string b = to_string(arr2[j]);
+             int lb = b.size();
+              if (res >= lb)
+              {
+                  break;
+              }
+             int m = min(la,lb);
+             res = max(res, common(a, b, m));
+         }
+     }
+     return res;
+ }
 
 int common(string a, string b, int min)
 {
